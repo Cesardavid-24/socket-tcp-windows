@@ -5,10 +5,11 @@
 
 #include<Windows.h>
 #include<WinSock2.h>
-#include <ws2tcpip.h>
+#include<ws2tcpip.h>
 #include<iostream>
-#include <stdlib.h>
-#include<cstring>
+#include<stdlib.h>
+#include<sstream>
+
 
 #pragma comment(lib, "ws2_32.lib")
 using namespace std;

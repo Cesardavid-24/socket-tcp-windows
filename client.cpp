@@ -40,28 +40,33 @@ int main(){
         cout<<"WSAStartUp Failed (CLIENT)"<<endl;
     }
     cout<<"WSAStartUp Succes "<<endl; 
+
     //creacion del Socket
     TCPClientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if(TCPClientSocket == INVALID_SOCKET){
         cout<<"TCP Client Socket Creation Failed"<<WSAGetLastError()<<endl;
     }
     cout<<"TCP Client Socket Creation Succes"<<endl;
+
     //cargar llenar la estructura con la data
     TCPServerAdd.sin_family = AF_INET;
     TCPServerAdd.sin_addr.s_addr = inet_addr("127.0.0.1");
     TCPServerAdd.sin_port = htons(8000);
+
     //conectar socket
     iConnect = connect(TCPClientSocket,(SOCKADDR*)&TCPServerAdd , sizeof(TCPServerAdd));
     if(iConnect == SOCKET_ERROR){
         cout<<"Connection Failed  (CLIENT) & Error No-> "<<WSAGetLastError()<<endl;
     }
     cout<<"Connection Success"<<endl;
+
     //recibir datos del servidor
     iRecv = recv(TCPClientSocket,RecvBuffer,iRecvBuffer,0); 
     if(iRecv == SOCKET_ERROR){
         cout<<"Receive Data Failed (CLIENT) & Error No-> "<<WSAGetLastError()<<endl;
     }
     cout<<"Data Received -> "<<RecvBuffer<<endl;
+    
     //Enviar datos al servidor
     iSend = send(TCPClientSocket, SendBuffer, iSenderBuffer, 0);
     if(iSend == SOCKET_ERROR){
@@ -84,3 +89,4 @@ int main(){
     system("pause");
     return EXIT_SUCCESS;
 }
+//ALFA Network AWUS036AC Adaptador
